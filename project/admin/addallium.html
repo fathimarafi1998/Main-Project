@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Colorlib Templates">
+    <meta name="author" content="Colorlib">
+    <meta name="keywords" content="Colorlib Templates">
+
+    <!-- Title Page-->
+    <title> Add Allium </title>
+
+    <!-- Icons font CSS-->
+    <link href="vendor10/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+    <link href="vendor10/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
+    <!-- Font special for pages-->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+    <!-- Vendor CSS-->
+    <link href="vendor10/select2/select2.min.css" rel="stylesheet" media="all">
+    <link href="vendor10/datepicker/daterangepicker.css" rel="stylesheet" media="all">
+
+    <!-- Main CSS-->
+    <link href="css9/main.css" rel="stylesheet" media="all">
+
+</head>
+
+<body>
+    <div class="page-wrapper bg-gra-01 p-t-180 p-b-100 font-poppins">
+        <div class="wrapper wrapper--w780">
+            <div class="card card-3">
+                <div class="card-heading"></div>
+                <div class="card-body">
+                    <h2 class="title">Add Allium</h2>
+                    <form method="POST" action="addallium.php" enctype="multipart/form-data">
+					<div class="input-group">
+                            <input class="input--style-3" type="file" placeholder="photo" name="photo"  required >
+                        </div>
+                        <div class="input-group">
+                            <input class="input--style-3" type="text" placeholder="Allium Name" name="wname" id="name1" onblur="validate()" required >
+                        </div>
+						
+                        <div class="input-group">
+                            <input class="input--style-3" type="number" placeholder="Quantity" name="quantity" id="name1" onblur="validate()" required >
+                        </div>
+						                        <div class="input-group">
+                            <input class="input--style-3" type="text" placeholder="Price" name="price" id="name1" onblur="validate()" required >
+                        </div>
+						
+						<div class="p-t-10">
+                           <center> <button class="btn btn--pill btn--green" type="submit">Submit</button></center>
+							   
+                        </div>
+						
+                        
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+          function validate()
+          {
+          var name=document.getElementById("name1").value;
+          var letters=/^[a-zA-Z\s]*$/;
+          if(!name.match(letters))
+          {
+          alert("Please enter valid name");
+          document.getElementById("name1").value="";
+          }
+		  else if(name=="")
+		  {
+		  alert("Name don't be blank")
+		  }
+		  function check() {
+      var name = document.getElementById('name1').value;
+            if (!name) return;
+            console.log("WORKING user TILL HERE");
+            var ajax = new XMLHttpRequest();
+            ajax.onreadystatechange = function(){
+              if (this.readyState == 4 && this.status == 200 ){
+                console.log(this.response); //helps SEE WHATS GOING ON in the php file;
+                if(this.response=='TRUE'){
+                    alert("Already existing vegetable");
+                    document.getElementById('name1').value="";
+                    document.forms["reg"]["name"].focus();
+                }
+              }
+            }
+            ajax.open("GET", "check.php?name="+name, true);
+            ajax.send();
+
+}
+		  }
+          function validate8()
+          {
+          var name=document.getElementById("name2").value;
+          var letters=/^[a-zA-Z\s]*$/;
+          if(!name.match(letters))
+          {
+          alert("Please enter valid name");
+          document.getElementById("name2").value="";
+          }
+
+          }
+      function validate6()
+          {
+          var name=document.getElementById("address1").value;
+          var letters=/^[a-zA-Z\s]*$/;
+          if(!name.match(letters))
+          {
+          alert("Please enter description correctly");
+          document.getElementById("address1").value="";
+          }
+      }
+          function validate7()
+          {
+          var pincodee = document.getElementById("pincode1").value;
+          var code=/^\d{6}$|^\d{3}\d{3}$/;
+           if(!pincodee.match(code))
+          {
+          alert("Please enter pincode correctly");
+          document.getElementById("pincode1").value="";
+          }
+          }
+          function validate2()
+          {
+          var phone = document.getElementById("phno").value;
+          var ph=/^(9|8|7|6)[0-9]{9}$/;
+           if(!phone.match(ph))
+          {
+          alert("enter valid phone number");
+          document.getElementById("phno").value="";
+          }
+          }
+          function validate1()
+          {
+          var email=document.getElementById("email1").value;
+          var pat=/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+?\.[a-zA-Z]{2,4}$/;
+           if(!email.match(pat))
+          {
+          alert("Please enter valid email");
+          document.getElementById("email1").value="";
+          }
+          }
+          function validate3()
+          {
+          var name=document.getElementById("uname1").value;
+          var letters=/^[0-9a-zA-Z]+$/;
+          if(!name.match(letters))
+          {
+          alert("Please enter valid username");
+          document.getElementById("uname1").value="";
+          }
+          }
+          function validate4()
+          {
+          var password = document.getElementById("pass").value;
+          var pass=/(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W]).{6,}/;
+           if(!password.match(pass))
+           {
+            alert("Please enter valid password");
+           document.getElementById("pass").value="";
+          }
+          }
+          function validcpass()
+             {
+              var password=document.getElementById("pass").value;
+            var cpass=document.getElementById("cpawd").value;
+            if(!(password==cpass))
+            {
+             alert("Password not matching");
+             document.getElementById("cpawd").value="";
+            }
+             }
+
+          </script>
+
+
+
+
+
+
+    <!-- Jquery JS-->
+    <script src="vendor10/jquery/jquery.min.js"></script>
+    <!-- Vendor JS-->
+    <script src="vendor10/select2/select2.min.js"></script>
+    <script src="vendor10/datepicker/moment.min.js"></script>
+    <script src="vendor10/datepicker/daterangepicker.js"></script>
+
+    <!-- Main JS-->
+    <script src="js/global.js"></script>
+
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+
+</html>
+<!-- end document-->
